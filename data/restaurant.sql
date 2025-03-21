@@ -9,7 +9,7 @@ use restaurant;
 
 create table customers (
   username varchar(64) not null,
-  password varchar(128) not null,
+  password varchar(128) not null
 );
 
 insert into customers(username, password) values
@@ -32,8 +32,3 @@ create table place_orders (
 
   constraint pk_order_id primary key(order_id)
 );
-
-
-select "Grant privileges to testuser" as msg;
-grant all privileges on restaurant.* to 'testuser'@'%';
-flush privileges;
