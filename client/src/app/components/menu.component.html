@@ -1,0 +1,104 @@
+<div class="row mt-3">
+  <div class="col d-flex justify-content-between align-items-center">
+    <div class="fs-1 fw-bold text-primary">Menu ({{totalPrice$|async|currency}})</div>
+    <div>
+      <button type="button" class="btn btn-primary" [disabled]="placeOrderInvalid()" (click)="goToPlaceOrder()">
+        Place Order ({{totalNumber$|async}})
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- each row display a single mene item -->
+
+@for(menu of menuList$ |async; track menu){
+  <div class="row mb-2">
+    <div class="col">
+      <div class="menu-item">
+        <div>
+          <button type="button" class="btn btn-warning">
+            <i class="bi bi-x-square" (click)="subtract(menu)"></i>
+          </button>
+        </div>
+        <div class="menu-details">
+          <div>Name: <span class="fw-bold"> {{menu.name}}</span> </div>
+          <div>Description:
+            <span class="fst-italic">
+              {{menu.description}}
+            </span>
+          </div>
+          <div>Price: {{menu.price |currency}}</div>
+          @if(menu.quantity || menu.quantity > 0){
+            <div class="text-danger fw-bold">Quantity: {{menu.quantity}}</div>
+          }
+          
+        </div>
+        <div class="menu-button-end">
+          <button type="button" class="btn btn-success">
+            <i class="bi bi-plus-circle" (click)="add(menu)"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+
+
+
+
+
+
+<!-- <div class="row mb-2">
+  <div class="col">
+    <div class="menu-item">
+      <div>
+        <button type="button" class="btn btn-warning">
+          <i class="bi bi-x-square"></i>
+        </button>
+      </div>
+      <div class="menu-details">
+        <div>Name: <span class="fw-bold"> XXX </span> </div>
+        <div>Description:
+          <span class="fst-italic">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </span>
+        </div>
+        <div></div>
+          <div class="text-danger fw-bold">Quantity: XXX</div>
+      </div>
+      <div class="menu-button-end">
+        <button type="button" class="btn btn-success">
+          <i class="bi bi-plus-circle"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="row mb-2">
+  <div class="col">
+    <div class="menu-item">
+      <div>
+        <button type="button" class="btn btn-warning">
+          <i class="bi bi-x-square"></i>
+        </button>
+      </div>
+      <div class="menu-details">
+        <div>Name: <span class="fw-bold"> XXX </span> </div>
+        <div>Description:
+          <span class="fst-italic">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </span>
+        </div>
+        <div></div>
+          <div class="text-danger fw-bold">Quantity: XXX</div>
+      </div>
+      <div class="menu-button-end">
+        <button type="button" class="btn btn-success">
+          <i class="bi bi-plus-circle"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
